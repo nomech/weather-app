@@ -9,11 +9,13 @@ function WeatherCard({ condition, icon, maxTempC, maxTempF, location, date }) {
     return (
       <>
       <div className="weatherCard">
+        <hr />
+        <p>{date}</p>
         <img src={icon} />
         <p>{condition}</p>
         <p>{Math.floor(maxTempC)} °C | {Math.floor(maxTempF)} °F</p>
         <p>{location}</p>
-        <p>{date}</p>
+        <hr />
         </div>
       </>
     );

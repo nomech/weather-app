@@ -45,6 +45,24 @@
 
 .weatherContainer {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  place-items: center;
+}
+
+
+.currentWeather {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  place-items: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.weatherForecast {
+  display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 

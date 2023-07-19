@@ -23,6 +23,21 @@ function convertDate(date) {
     return formattedDateString;
   }
 
+function getDay(date){
+  
+const inputDate =  date 
+const dateParts = inputDate.split("-");
+const formattedDate = new Date(dateParts[0], parseInt(dateParts[1]) - 1, dateParts[2]);
 
+// Get the day of the week (0-6)
+const dayOfWeek = formattedDate.getDay();
 
-  export { convertDate };
+// Define an array of weekday names
+const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+// Get the weekday name based on the dayOfWeek
+const weekdayName = weekdays[dayOfWeek];
+
+return(weekdayName); // Output: "Wednesday"
+}
+  export { convertDate, getDay };
