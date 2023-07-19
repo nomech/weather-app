@@ -14,7 +14,7 @@ function useWeather() {
         let response = await fetch(
           `https://api.weatherapi.com/v1/forecast.json?key=${
             import.meta.env.VITE_APP_WEATHER_API_KEY
-          }&=Oslo&days=7&aqi=no&alerts=no`
+          }&q=Oslo&days=7&aqi=no&alerts=no`
         );
     
         let data = await response.json();
