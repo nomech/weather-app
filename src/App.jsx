@@ -1,28 +1,18 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import useWeather from "./components/utils/weather";
 import "./App.css";
-import WeatherCard from "./components/weatherCard";
-import { convertDate, getDay } from "./components/convertDate";
+import WeatherCard from "./components/weathercard/weatherCard";
+import { convertDate, getDay } from "./components/utils/convertDate";
 
 function App() {
-  const [weatherLocation, setWeatherLocation] = useState([]);
-  const [weatherCurrent, setWeatherCurrent] = useState([]);
-  const [weatherForecast, setWeatherForecast] = useState([]);
-
-  async function getWeather() {
-    try{
-    let response = await fetch(
-      "https://api.weatherapi.com/v1/forecast.json?key=cb764fe31c284560881210432231807&q=Oslo&days=7&aqi=no&alerts=no"
-    );
-    let data = await response.json();
-    setWeatherLocation(data.location);
-    setWeatherCurrent(data.current);
-    setWeatherForecast(data.forecast.forecastday);
-    } catch(error) {
-      console.log('Error encountered: ' + error)
-    }
-  }
+  const {
+    weatherLocation,
+    weatherCurrent,
+    weatherForecast,
+    isLoading,
+    errorCode,
+    errorMessage,
+    getWeather,
+  } = useWeather();
 
   //testing purpose
   //getWeather()
@@ -36,28 +26,63 @@ function App() {
     }
   }
 */
-
   return (
     <>
       <div className="bodyContainer">
-        <div>
-          <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-            <img src={viteLogo} className="logo" alt="Vite logo" />
-          </a>
-          <a href="https://react.dev" target="_blank" rel="noreferrer">
-            <img src={reactLogo} className="logo react" alt="React logo" />
-          </a>
+        <div className="titleLogo">
+          {/* Display logos for Vite and React */}
+          <h1>My Weather App</h1>
+          <div>
+            <img
+              src="https://cdn.weatherapi.com/weather/64x64/day/116.png"
+              className="weatherLogo"
+              alt="Weather logo"
+            />
+          </div>
         </div>
-        <h3>Powered by Vite + React</h3>
-
-        <h1>My Weather app</h1>
-        <button onClick={getWeather}>Get me some new weather yo!</button>
-
+        <div>
+          <h3>
+            Powered by <span className="vite">Vite</span> +{" "}
+            <span className="react">React</span>
+          </h3>
+        </div>
+        <div className="fetchBtn">
+          {/* Button to fetch new weather data */}
+          <button onClick={getWeather}>Get me some weather yo!</button>
+        </div>
         <div className="weatherContainer">
           <div className="currentWeather">
-            <div>
-            <p>Current Weather</p>
-            </div>
+            {/* Display current weather if available */}
+
+            {isLoading ? (
+              <div className="lds-default">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            ) : null}
+
+            {errorCode && (
+              <p>
+                Error {errorCode}: {errorMessage} Please contact the System
+                Administrator
+              </p>
+            )}
+
+            {!isLoading && weatherLocation.name ? (
+              <div>
+                <p>Current Weather</p>
+              </div>
+            ) : null}
             {weatherLocation.name ? (
               <WeatherCard
                 condition={weatherCurrent.condition.text}
@@ -69,28 +94,33 @@ function App() {
               />
             ) : null}
           </div>
-          
-          <div>
-          <p>Forecast</p>
-          
-          </div>
 
-          <div className="weatherForecast">            
+          {/* Display forecast heading if weather data is available */}
+          {weatherLocation.name ? (
+            <div>
+              <p>Forecast</p>
+            </div>
+          ) : null}
+          <div className="weatherForecast">
+            {/* Display forecast if weather data is available */}
             {weatherLocation.name
-              ? weatherForecast.slice(1).map((forcast, index) => (
-                  <WeatherCard
-                    key={index}
-                    condition={forcast.day.condition.text}
-                    icon={forcast.day.condition.icon}
-                    maxTempC={forcast.day.maxtemp_c}
-                    maxTempF={forcast.day.maxtemp_f}
-                    location={weatherCurrent.location}
-                    date={getDay(forcast.date) + ' ' + convertDate(forcast.date)}
-                  />
-                ))
+              ? weatherForecast
+                  .slice(1)
+                  .map((forcast) => (
+                    <WeatherCard
+                      key={forcast.date}
+                      condition={forcast.day.condition.text}
+                      icon={forcast.day.condition.icon}
+                      maxTempC={forcast.day.maxtemp_c}
+                      maxTempF={forcast.day.maxtemp_f}
+                      location={weatherCurrent.location}
+                      date={
+                        getDay(forcast.date) + " " + convertDate(forcast.date)
+                      }
+                    />
+                  ))
               : null}
           </div>
-
         </div>
       </div>
     </>

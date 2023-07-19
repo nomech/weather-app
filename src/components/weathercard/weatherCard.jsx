@@ -30,4 +30,7 @@ function WeatherCard({ condition, icon, maxTempC, maxTempF, location, date }) {
     date: PropTypes.string
   }
 
+
+  
+
   export default WeatherCard
