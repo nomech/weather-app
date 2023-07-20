@@ -1,16 +1,18 @@
 .weatherCard {
-    margin: 10px 10px 0px 10px;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 10px;
-    background-color: #1a1a1a;
-    transition: border-color 0.25s;
-    font-family: inherit;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    width: 180px;
-  }
+  margin: 10px 10px 0px 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 10px;
+  background-color: #1a1a1a;
+  transition: border-color 0.25s, transform 0.25s, filter 0.25s;
+  font-family: inherit;
+  font-size: 1em;
+  width: 180px;
+  
+}
 
 .weatherCard:hover {
-    border-color: #646cff;
-  }
+  border-color: #646cff;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 1em #000000aa);
+}

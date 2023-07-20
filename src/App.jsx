@@ -2,6 +2,9 @@ import useWeather from "./components/utils/weather";
 import "./App.css";
 import WeatherCard from "./components/weathercard/weatherCard";
 import { convertDate, getDay } from "./components/utils/convertDate";
+import Loadingspinner from "./components/loadingspinner/loadingspinner";
+import ErrorHandler from "./components/errorhandler/errorhandler";
+import Autocomplete from "react-google-autocomplete";
 
 function App() {
   const {
@@ -10,22 +13,12 @@ function App() {
     weatherForecast,
     isLoading,
     errorCode,
-    errorMessage,
+    search,
     getWeather,
+    handleSubmit,
+    handleSearch,
   } = useWeather();
 
-  //testing purpose
-  //getWeather()
-  //setInterval(getWeather, 60 * 60 * 1000);
-
-  //in case I add submit button
-  /*
-  function handleEnter(event) {
-    if (event.which === 13) {
-      getWeather();
-    }
-  }
-*/
   return (
     <>
       <div className="bodyContainer">
@@ -46,41 +39,36 @@ function App() {
             <span className="react">React</span>
           </h3>
         </div>
-        <div className="fetchBtn">
-          {/* Button to fetch new weather data */}
-          <button onClick={getWeather}>Get me some weather yo!</button>
-        </div>
+        <form className="inputForm" onSubmit={handleSubmit}>
+          <div className="inputContainer">
+            <Autocomplete
+              apiKey={import.meta.env.VITE_APP_WEATHER_GOOGLE_API_KEY}
+              options={{
+                types: ["(cities)"],
+              }}
+              onPlaceSelected={handleSearch}
+              inputAutocompleteValue={search}
+            />
+          </div>
+          <div className="fetchBtn">
+            {/* Button to fetch new weather data */}
+            <button onClick={getWeather}>Get me some weather yo!</button>
+          </div>
+        </form>
         <div className="weatherContainer">
           <div className="currentWeather">
             {/* Display current weather if available */}
 
-            {isLoading ? (
-              <div className="lds-default">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-            ) : null}
+            {isLoading && <Loadingspinner />}
 
-            {errorCode && (
-              <p>
-                Error {errorCode}: {errorMessage} Please contact the System
-                Administrator
-              </p>
-            )}
+            {errorCode && <ErrorHandler errorCode={errorCode} />}
 
             {!isLoading && weatherLocation.name ? (
               <div>
-                <p>Current Weather</p>
+                <p>
+                  Current Weather for {weatherLocation.name},{" "}
+                  {weatherLocation.country}
+                </p>
               </div>
             ) : null}
             {weatherLocation.name ? (
@@ -98,7 +86,9 @@ function App() {
           {/* Display forecast heading if weather data is available */}
           {weatherLocation.name ? (
             <div>
-              <p>Forecast</p>
+              <p>
+                Forecast for {weatherLocation.name}, {weatherLocation.country}
+              </p>
             </div>
           ) : null}
           <div className="weatherForecast">
