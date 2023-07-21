@@ -21,7 +21,7 @@ function App() {
     handleSearch,
   } = useWeather();
 
-  const [days, setDays] = useState('')
+  const [days, setDays] = useState('3')
 
 
   return (
