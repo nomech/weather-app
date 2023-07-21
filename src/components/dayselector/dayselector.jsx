@@ -16,7 +16,9 @@ function Dayselector({setDays}) {
         <option value="7">6</option>
       </select>
     </div>
+    
   )
+
 }
 
 Dayselector.propTypes = {
