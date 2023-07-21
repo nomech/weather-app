@@ -24,7 +24,7 @@ function App() {
       <div className="bodyContainer">
         <div className="titleLogo">
           {/* Display logos for Vite and React */}
-          <h1>My Weather App</h1>
+          <h1>Simple Weather App</h1>
           <div>
             <img
               src="https://cdn.weatherapi.com/weather/64x64/day/116.png"
@@ -52,7 +52,7 @@ function App() {
           </div>
           <div className="fetchBtn">
             {/* Button to fetch new weather data */}
-            <button onClick={getWeather}>Get me some weather yo!</button>
+            <button onClick={getWeather}>Get me some weather!</button>
           </div>
         </form>
         <div className="weatherContainer">
