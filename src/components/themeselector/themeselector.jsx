@@ -10,7 +10,6 @@ function ThemeSelector({ setTheme, theme }) {
     } else {
       setTheme("dark");
     }
-    console.log(theme);
   };
 
   return (
