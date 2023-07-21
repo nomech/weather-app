@@ -75,7 +75,7 @@ function App() {
               <WeatherCard
                 condition={weatherCurrent.condition.text}
                 icon={weatherCurrent.condition.icon}
-                maxTempC={weatherCurrent.temp_c}
+                maxTempC={weatherCurrent.temp_c + 3}
                 maxTempF={weatherCurrent.temp_f}
                 location={weatherCurrent.location}
                 date="Today"
