@@ -65,10 +65,6 @@ input:hover {
 
 }
 
-
-
-
-
 .card {
   padding: 2em;
 }
@@ -111,4 +107,30 @@ input:hover {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.foreCastTextContainer {
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  margin-bottom: 50px;
+}
+
+.forecastLocation {
+  margin-left: 3px;
+}
+
+.days{
+  border-style: none;
+  background-color: #242424;
+  border-bottom: 1px solid;
+  transition: border-bottom-color 0.3s ease, width 0.3s ease;
+  font-size: large;
+  color: aliceblue;
+}
+
+
+.days:hover {
+  border-bottom-color: #535bf2;
+  outline: none;
 }

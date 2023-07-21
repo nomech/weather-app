@@ -5,6 +5,8 @@ import { convertDate, getDay } from "./components/utils/convertDate";
 import Loadingspinner from "./components/loadingspinner/loadingspinner";
 import ErrorHandler from "./components/errorhandler/errorhandler";
 import Autocomplete from "react-google-autocomplete";
+import Dayselector from "./components/dayselector/dayselector";
+import { useState } from "react";
 
 function App() {
   const {
@@ -18,6 +20,9 @@ function App() {
     handleSubmit,
     handleSearch,
   } = useWeather();
+
+  const [days, setDays] = useState('')
+
 
   return (
     <>
@@ -85,17 +90,22 @@ function App() {
 
           {/* Display forecast heading if weather data is available */}
           {weatherLocation.name ? (
-            <div>
-              <p>
-                Forecast for {weatherLocation.name}, {weatherLocation.country}
-              </p>
-            </div>
+            <>
+              <div className="foreCastTextContainer">
+              <Dayselector setDays={setDays} />
+                <div className="forecastLocation">
+                  <p>
+                    days for {weatherLocation.name}, {weatherLocation.country}
+                  </p>
+                </div>
+              </div>
+            </>
           ) : null}
           <div className="weatherForecast">
             {/* Display forecast if weather data is available */}
             {weatherLocation.name
               ? weatherForecast
-                  .slice(1)
+                  .slice(1,days)
                   .map((forcast) => (
                     <WeatherCard
                       key={forcast.date}
