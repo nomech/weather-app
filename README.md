@@ -1,5 +1,5 @@
 
-# Weather App
+# Simple Weather App
 
 This is a weather application built using React. The application fetches weather data from an external API and displays current weather conditions and a 7-day forecast for a specified location.
 
