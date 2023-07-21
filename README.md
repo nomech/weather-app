@@ -33,6 +33,7 @@ npm install
 
 ```env
 VITE_APP_WEATHER_API_KEY=your_weather_api_key
+VITE_APP_WEAHTER_API_BASE_URL=https://api.weatherapi.com/v1/forecast.json?
 VITE_APP_WEATHER_GOOGLE_API_KEY=your_google_api_key
 ```
 
