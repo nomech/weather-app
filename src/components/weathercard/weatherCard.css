@@ -1,18 +1,36 @@
-.weatherCard {
+.weatherCarddark {
   margin: 10px 10px 0px 10px;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 10px;
   background-color: #1a1a1a;
-  transition: border-color 0.25s, transform 0.25s, filter 0.25s;
+  transition: border-color 0.25s, transform 0.25s, filter 0.25s,background-color 1.5s;
+  font-family: inherit;
+  font-size: 1em;
+  width: 180px;  
+}
+
+.weatherCarddark:hover {
+  border-color: #646cff;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 1em #000000aa);
+}
+
+
+.weatherCardlight {
+  margin: 10px 10px 0px 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 10px;
+  background-color: #0088b3;
+  transition: border-color 0.25s, transform 0.25s, filter 0.25s,background-color 1.5s;
   font-family: inherit;
   font-size: 1em;
   width: 180px;
   
 }
 
-.weatherCard:hover {
-  border-color: #646cff;
+.weatherCardlight:hover {
   transform: scale(1.1);
-  filter: drop-shadow(0 0 1em #000000aa);
+  filter: drop-shadow(0 0 1em #ffffffaa);
 }

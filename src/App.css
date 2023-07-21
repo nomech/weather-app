@@ -1,3 +1,28 @@
+.light{
+  background-color: #00a4e4;
+  transition: background-color 1.5s ease;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dark{
+  background-color: #292530;
+  transition: background-color 1.5s ease;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
 .titleLogo {
   display: flex;
   
@@ -6,12 +31,12 @@
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-  transition: filter 300ms, height 0.3s ease;
+  transition: filter 1s;
   overflow: hidden;
 }
 .weatherLogo:hover {
   filter: drop-shadow(0 0 2em #ffd901aa);
-  height: 7em;
+  transition: filter 1s;
 }
 
 .vite {
@@ -69,12 +94,26 @@ input:hover {
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
-}
 
 .fetchBtn{
   margin-top: 15px;
+}
+
+.fetchBtnlight {
+  background-color: #0088b3;
+  transition: background-color 1.5s;
+
+}
+
+.fetchBtnlight:hover {
+  border-color: white
+
+}
+
+.fetchBtndark {
+  background-color: #000000aa;
+  transition: background-color 1.5s;
+
 }
 
 .bodyContainer {
@@ -120,17 +159,32 @@ input:hover {
   margin-left: 3px;
 }
 
-.days{
+.daysdark{
   border-style: none;
-  background-color: #242424;
+  background-color: #292530;
   border-bottom: 1px solid;
-  transition: border-bottom-color 0.3s ease, width 0.3s ease;
+  transition: border-bottom-color 0.3s ease, width 0.3s ease, background-color 1.5s;
   font-size: large;
   color: aliceblue;
 }
 
 
-.days:hover {
+.daysdark:hover {
   border-bottom-color: #535bf2;
+  outline: none;
+}
+
+.dayslight{
+  border-style: none;
+  background-color: #00a4e4;
+  border-bottom: 1px solid;
+  transition: border-bottom-color 0.3s ease, width 0.3s ease, background-color 1.5s;
+  font-size: large;
+  color: aliceblue;
+}
+
+
+.dayslight:hover {
+  border-bottom-color: #ffffff;
   outline: none;
 }

@@ -2,13 +2,13 @@ import "./WeatherCard.css"
 import PropTypes from 'prop-types';
 
 
-function WeatherCard({ condition, icon, maxTempC, maxTempF, location, date }) {
+function WeatherCard({ condition, icon, maxTempC, maxTempF, location, date, theme }) {
 
 
 
     return (
       <>
-      <div className="weatherCard">
+      <div className={`weatherCard${theme}`}> 
         <hr />
         <p>{date}</p>
         <img src={icon} />
@@ -27,7 +27,8 @@ function WeatherCard({ condition, icon, maxTempC, maxTempF, location, date }) {
     maxTempC: PropTypes.number,
     maxTempF: PropTypes.number,
     location: PropTypes.string,
-    date: PropTypes.string
+    date: PropTypes.string,
+    theme: PropTypes.string
   }
 
 
