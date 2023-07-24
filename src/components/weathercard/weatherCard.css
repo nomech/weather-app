@@ -34,3 +34,13 @@
   transform: scale(1.1);
   filter: drop-shadow(0 0 1em #ffffffaa);
 }
+
+
+.weatherCardExtendeddark {
+  display: none;
+}
+
+.extendedExit:hover {
+  border-color: #646cff;
+  filter: drop-shadow(0 0 1em #000000aa);
+}
