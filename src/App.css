@@ -102,12 +102,10 @@ input:hover {
 .fetchBtnlight {
   background-color: #0088b3;
   transition: background-color 1.5s;
-
 }
 
 .fetchBtnlight:hover {
   border-color: white
-
 }
 
 .fetchBtndark {
@@ -188,3 +186,4 @@ input:hover {
   border-bottom-color: #ffffff;
   outline: none;
 }
+

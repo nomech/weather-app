@@ -32,6 +32,11 @@ function App() {
     console.log(enabled);
   };
 
+  const handleExit = () => {
+    setEnabled(false)
+    console.log('Ive hit exit')
+  }
+
   return (
     <>
         <div className="theme">
@@ -51,8 +56,10 @@ function App() {
                 feelsLikeF={weatherCurrent.feelslike_f}
                 theme={theme}
                 enabled={enabled}
+                handleExit={handleExit}
               />
             ) : null}
+            
           </div>
           <div className={`blurConatiner-${enabled}`}>
           <div className={`${theme}`}>
