@@ -23,7 +23,9 @@ function WeatherCardExtended({ condition, icon, maxTempC, maxTempF, location, da
           <p>Feels Like: {Math.floor(feelsLikeC)} °C | {Math.floor(feelsLikeF)} °F</p>
         </div>
         <div className='extendedExit'>
-          <button onClick={handleExit}>X</button>
+          <button onClick={handleExit}>
+            X
+          </button>
         </div>
       </div>
     </>

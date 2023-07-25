@@ -6,7 +6,7 @@ import Loadingspinner from "./components/loadingspinner/loadingspinner";
 import ErrorHandler from "./components/errorhandler/errorhandler";
 import Autocomplete from "react-google-autocomplete";
 import Dayselector from "./components/dayselector/dayselector";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ThemeSelector from "./components/themeselector/themeselector";
 import WeatherCardExtended from "./components/weatherCardExtended/weatherCard.extended";
 
@@ -27,6 +27,10 @@ function App() {
   const [theme, setTheme] = useState("dark");
   const [enabled, setEnabled] = useState(false);
 
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+  
   const handleEnabled = () => {
     setEnabled(!enabled);
     console.log(enabled);
@@ -56,10 +60,9 @@ function App() {
                 feelsLikeF={weatherCurrent.feelslike_f}
                 theme={theme}
                 enabled={enabled}
-                handleExit={handleExit}
+                handleExit ={handleExit}
               />
             ) : null}
-            
           </div>
           <div className={`blurConatiner-${enabled}`}>
           <div className={`${theme}`}>
