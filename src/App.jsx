@@ -27,23 +27,28 @@ function App() {
   const [theme, setTheme] = useState("dark");
   const [enabled, setEnabled] = useState(false);
 
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
-  
   const handleEnabled = () => {
     setEnabled(!enabled);
     console.log(enabled);
   };
 
   const handleExit = () => {
-    setEnabled(false)
-    console.log('Ive hit exit')
-  }
+    setEnabled(false);
+    console.log(enabled);
+  };
+
+  useEffect(() => {
+    const originalColor = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = theme === 'light' ? '#00a4e4' : '#292530';
+
+    return () => {
+      document.body.style.backgroundColor = originalColor;
+    };
+  }, [theme]); 
 
   return (
     <>
-        <div className="theme">
+        <div className={`${theme}`}>
           <div>
             {weatherLocation.name ? (
               <WeatherCardExtended
@@ -60,12 +65,12 @@ function App() {
                 feelsLikeF={weatherCurrent.feelslike_f}
                 theme={theme}
                 enabled={enabled}
-                handleExit ={handleExit}
+                handleExit={handleExit}
               />
             ) : null}
           </div>
           <div className={`blurConatiner-${enabled}`}>
-          <div className={`${theme}`}>
+          <div>
             <div className="bodyContainer">
               <div className="titleLogo">
                 {/* Display logos for Vite and React */}

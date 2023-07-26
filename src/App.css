@@ -1,14 +1,3 @@
-.light {
-  background-color: #00a4e4;
-  transition: background-color 1.5s ease;
-}
-
-.dark {
-  background-color: #292530;
-  transition: background-color 1.5s ease;
-}
-
-
 
 .titleLogo { 
   display: flex;

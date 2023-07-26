@@ -1,7 +1,7 @@
 import './weatherCardExtended.css';
 import PropTypes from 'prop-types';
 
-function WeatherCardExtended({ condition, icon, maxTempC, maxTempF, location, date, windSpeed, windDirection, humidity, feelsLikeC, feelsLikeF, theme, enabled,handleExit }) {
+function WeatherCardExtended({ condition, icon, maxTempC, maxTempF, location, date, windSpeed, windDirection, humidity, feelsLikeC, feelsLikeF, theme, enabled, handleExit }) {
   const className = `weatherCardExtended-${enabled ? "true" : "false"}-${theme}`;    
 
   return (
@@ -45,7 +45,8 @@ WeatherCardExtended.propTypes= {
   feelsLikeC: PropTypes.number,
   feelsLikeF: PropTypes.number,
   theme: PropTypes.string,
-  enabled: PropTypes.bool
+  enabled: PropTypes.bool,
+  handleExit: PropTypes.func
 }
 
 export default WeatherCardExtended;

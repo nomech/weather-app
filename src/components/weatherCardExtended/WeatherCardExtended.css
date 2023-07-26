@@ -18,8 +18,35 @@
   width: 400px;
 }
 
+.weatherCardExtended-true-light {
+  margin: 10px;
+  border-radius: 8px;
+  border: 1px transparent ;
+  padding: 10px;
+  background-color: #0088b3;
+  padding: 60px;
+  font-family: inherit;
+  font-size: 1em;
+  z-index: 2; /* Set z-index higher to place it on top of the blur container */
+  filter: drop-shadow(0 0 1em white);
+  position: sticky;
+  opacity: 1;
+  transition: opacity 0.3s ease, filter 0.6s ease; /* Add filter transition */
+  display: flex;
+  flex-direction: row;
+  top: 0; 
+  width: 400px;
+}
+
   
   .weatherCardExtended-false-dark {
+    pointer-events: none; /* This class will hide the content when extended is false */
+    position: absolute;
+    opacity: 0;
+    z-index: 1; /* Lower z-index to place it behind .blurConatiner-false */
+  }
+
+  .weatherCardExtended-false-light {
     pointer-events: none; /* This class will hide the content when extended is false */
     position: absolute;
     opacity: 0;
