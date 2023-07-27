@@ -50,13 +50,49 @@ function App() {
   };
 
   useEffect(() => {
-    const originalColor = document.body.style.backgroundColor;
+    const originalBodyColor = document.body.style.backgroundColor;
+    
+    const weatherElements = document.querySelectorAll('.weatherCard');
+    const originalWeatherColors = [];
+    const originalWeatherShadows = [];
+    
+    const daysElement = document.querySelector('.days');    
+    const originalDaysColor = daysElement ? daysElement.style.backgroundColor : null;
+  
+    const fetchBtnElement = document.querySelector('.fetchBtn');
+    const originalFetchBtnColor = fetchBtnElement ? fetchBtnElement.style.backgroundColor : null;
+    
     document.body.style.backgroundColor = theme === 'light' ? '#00a4e4' : '#292530';
-
+    
+    if (fetchBtnElement) fetchBtnElement.style.backgroundColor = theme === 'light' ? '#0088b3' : '#000000aa';
+  
+    weatherElements.forEach((element, index) => {
+      originalWeatherColors[index] = element.style.backgroundColor;
+      originalWeatherShadows[index] = element.style.getPropertyValue('--shadow-color');
+    
+      element.style.backgroundColor = theme === 'light' ? '#0088b3' : '#1a1a1a';
+      element.style.setProperty('--shadow-color', theme === 'light' ? '#ffffffaa' : '#000000aa');
+    });
+    
+    if (daysElement) daysElement.style.backgroundColor = theme === 'light' ? '#0088b3' : '#1a1a1a';
+  
     return () => {
-      document.body.style.backgroundColor = originalColor;
-    };
-  }, [theme]); 
+      document.body.style.backgroundColor = originalBodyColor;
+    
+      if (fetchBtnElement) fetchBtnElement.style.backgroundColor = originalFetchBtnColor;
+    
+      weatherElements.forEach((element, index) => {
+        element.style.backgroundColor = originalWeatherColors[index];
+        element.style.setProperty('--shadow-color', originalWeatherShadows[index]);
+      });
+  
+      if (daysElement) daysElement.style.backgroundColor = originalDaysColor;
+    }
+  }, [theme, days]);
+  
+  
+  
+  
 
   return (
     <>
@@ -131,9 +167,9 @@ function App() {
                     inputAutocompleteValue={search}
                   />
                 </div>
-                <div className="fetchBtn">
+                <div>
                   {/* Button to fetch new weather data */}
-                  <button className={`fetchBtn${theme}`} onClick={getWeather}>
+                  <button className={`fetchBtn`} onClick={getWeather}>
                     Get me some weather!
                   </button>
                 </div>
@@ -163,7 +199,6 @@ function App() {
                       location={weatherCurrent.location}
                       date="Today"
                       onClick={handleEnabled}
-                      theme={theme}
                     />
                   ) : null}
                 </div>

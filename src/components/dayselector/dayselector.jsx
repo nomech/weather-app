@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
+import './dayselector.css'
 
-function Dayselector({setDays, theme}) {
+function Dayselector({setDays}) {
 
 
   const handleDays = (event) => {
@@ -10,7 +11,7 @@ function Dayselector({setDays, theme}) {
   return (
     <div>
       <label htmlFor="days">Show forecast for the next </label>
-      <select name="days" id="days" className={`days${theme}`} onChange={handleDays}>
+      <select name="days" id="days" className={`days`} onChange={handleDays}>
         <option value="3">2</option>
         <option value="5">4</option>
         <option value="7">6</option>

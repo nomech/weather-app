@@ -73,24 +73,10 @@ input:hover {
 
 .fetchBtn{
   margin-top: 15px;
-}
-
-.fetchBtnlight {
-  background-color: #0088b3;
-  transition: background-color 1.5s;
-
-}
-
-.fetchBtnlight:hover {
-  border-color: white
-
-}
-
-.fetchBtndark {
   background-color: #000000aa;
   transition: background-color 1.5s;
-
 }
+
 
 .bodyContainer {
   display: flex;
@@ -133,34 +119,4 @@ input:hover {
 
 .forecastLocation {
   margin-left: 3px;
-}
-
-.daysdark{
-  border-style: none;
-  background-color: #292530;
-  border-bottom: 1px solid;
-  transition: border-bottom-color 0.3s ease, width 0.3s ease, background-color 1.5s;
-  font-size: large;
-  color: aliceblue;
-}
-
-
-.daysdark:hover {
-  border-bottom-color: #535bf2;
-  outline: none;
-}
-
-.dayslight{
-  border-style: none;
-  background-color: #00a4e4;
-  border-bottom: 1px solid;
-  transition: border-bottom-color 0.3s ease, width 0.3s ease, background-color 1.5s;
-  font-size: large;
-  color: aliceblue;
-}
-
-
-.dayslight:hover {
-  border-bottom-color: #ffffff;
-  outline: none;
 }

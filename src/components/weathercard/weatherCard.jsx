@@ -2,13 +2,13 @@ import "./WeatherCard.css"
 import PropTypes from 'prop-types';
 
 
-function WeatherCard({ condition, icon, maxTempC, maxTempF, location, date, theme, onClick,  }) {
+function WeatherCard({ condition, icon, maxTempC, maxTempF, location, date, onClick,  }) {
 
 
 
     return (
       <>
-      <div className={`weatherCard${theme}`} onClick={onClick}> 
+      <div className={`weatherCard`} onClick={onClick}> 
         <hr />
         <p>{date}</p>
         <img src={icon} />

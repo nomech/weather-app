@@ -1,0 +1,17 @@
+.days{
+    border-style: none;
+    background-color: #292530;
+    border-bottom: 1px solid;
+    transition: border-bottom-color 0.3s ease, width 0.3s ease, background-color 1.5s;
+    font-size: large;
+    color: aliceblue;
+  }
+  
+  
+  .days:hover {
+    border-bottom-color: #535bf2;
+    outline: none;
+  }
+
+  
+  
