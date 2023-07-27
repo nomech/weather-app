@@ -38,7 +38,7 @@ function App() {
 
   const handleForeCastEnabled = (index) => {
     setForeCastEnabled(!foreCastEnabled);
-    setIndex(index);
+    setIndex(index + 1);
     console.log(weatherForecast[index].day.condition.icon)
   };
 
