@@ -2,7 +2,7 @@ import "./WeatherCard.css"
 import PropTypes from 'prop-types';
 
 
-function WeatherCard({ condition, icon, maxTempC, maxTempF, location, date, theme, onClick }) {
+function WeatherCard({ condition, icon, maxTempC, maxTempF, location, date, theme, onClick,  }) {
 
 
 

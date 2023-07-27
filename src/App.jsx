@@ -8,7 +8,9 @@ import Autocomplete from "react-google-autocomplete";
 import Dayselector from "./components/dayselector/dayselector";
 import { useState, useEffect } from "react";
 import ThemeSelector from "./components/themeselector/themeselector";
-import WeatherCardExtended from "./components/weatherCardExtended/weatherCard.extended";
+import WeatherCardExtended from "./components/weatherCardExtended/weatherCardextended";
+import WeatherForecastExtended from "./components/weatherForecastExtended/WeatherForecastExtended";
+
 
 function App() {
   const {
@@ -26,15 +28,25 @@ function App() {
   const [days, setDays] = useState("3");
   const [theme, setTheme] = useState("dark");
   const [enabled, setEnabled] = useState(false);
+  const [foreCastEnabled, setForeCastEnabled] = useState(false);
+  const [index, setIndex] = useState('');
+ 
 
   const handleEnabled = () => {
     setEnabled(!enabled);
-    console.log(enabled);
   };
+
+  const handleForeCastEnabled = (index) => {
+    setForeCastEnabled(!foreCastEnabled);
+    setIndex(index);
+    console.log(weatherForecast[index].day.condition.icon)
+  };
+
 
   const handleExit = () => {
     setEnabled(false);
-    console.log(enabled);
+    setForeCastEnabled(false)
+
   };
 
   useEffect(() => {
@@ -49,7 +61,7 @@ function App() {
   return (
     <>
         <div className={`${theme}`}>
-          <div>
+          <>
             {weatherLocation.name ? (
               <WeatherCardExtended
                 condition={weatherCurrent.condition.text}
@@ -68,7 +80,25 @@ function App() {
                 handleExit={handleExit}
               />
             ) : null}
-          </div>
+          </>
+          <>
+          {weatherForecast[index] ? (
+              <WeatherForecastExtended
+              icon={weatherForecast[index].day.condition.icon}
+              condition={weatherForecast[index].day.condition.text}
+              maxTempC={weatherForecast[index].day.maxtemp_c + 3}
+              maxTempF={weatherForecast[index].day.maxtemp_f}
+              date={getDay(weatherForecast[index].date) + " " + convertDate(weatherForecast[index].date)}
+              windSpeed={weatherForecast[index].day.maxwind_kph}
+              humidity={weatherForecast[index].day.avghumidity}
+              feelsLikeC={weatherForecast[index].day.avgtemp_c}
+              feelsLikeF={weatherForecast[index].day.avgtemp_f}
+              handleExit={handleExit}
+              enabled={foreCastEnabled}
+              theme={theme}
+              />
+            ) : null}
+          </>
           <div className={`blurConatiner-${enabled}`}>
           <div>
             <div className="bodyContainer">
@@ -157,21 +187,19 @@ function App() {
                   {weatherLocation.name
                     ? weatherForecast
                         .slice(1, days)
-                        .map((forcast) => (
-                          <WeatherCard
-                            key={forcast.date}
-                            condition={forcast.day.condition.text}
-                            icon={forcast.day.condition.icon}
-                            maxTempC={forcast.day.maxtemp_c}
-                            maxTempF={forcast.day.maxtemp_f}
-                            location={weatherCurrent.location}
-                            date={
-                              getDay(forcast.date) +
-                              " " +
-                              convertDate(forcast.date)
-                            }
-                            theme={theme}
-                          />
+                        .map((forcast, index) => (
+                      <WeatherCard
+                        key={forcast.date}
+                        condition={forcast.day.condition.text}
+                        icon={forcast.day.condition.icon}
+                        maxTempC={forcast.day.maxtemp_c}
+                        maxTempF={forcast.day.maxtemp_f}
+                        location={weatherCurrent.location}
+                        date={getDay(forcast.date) + " " + convertDate(forcast.date)}
+                        theme={theme}
+                        onClick={() => handleForeCastEnabled(index)}
+                      />
+                       
                         ))
                     : null}
                 </div>
