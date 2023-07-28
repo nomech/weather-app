@@ -8,7 +8,6 @@ function useWeather() {
   const [errorCode, setErrorCode] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [search, setSearch] = useState("");
-console.log(weatherForecast)
   const handleSearch = (place) => {
     let cityName = "";
   

@@ -35,6 +35,10 @@
 
 .inputForm{
   margin-top: 50px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
 }
 
 .inputContainer {

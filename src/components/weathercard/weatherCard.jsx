@@ -28,7 +28,6 @@ function WeatherCard({ condition, icon, maxTempC, maxTempF, location, date, onCl
     maxTempF: PropTypes.number,
     location: PropTypes.string,
     date: PropTypes.string,
-    theme: PropTypes.string,
     onClick: PropTypes.func
   }
 
