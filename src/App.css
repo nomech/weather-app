@@ -15,24 +15,6 @@
   transition: filter 1s;
 }
 
-.vite {
-  height: 6em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-
-.vite:hover {
-  transition: filter 300ms;
-  filter: drop-shadow(0 0 2em #646cff);
-}
-
-.react:hover {
-  transition: filter 300ms;
-  filter: drop-shadow(0 0 2em #61dafb);
-}
-
-
 .inputForm{
   margin-top: 50px;
   width: 250px;

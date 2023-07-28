@@ -149,12 +149,6 @@ function App() {
                 </div>
                 <ThemeSelector setTheme={setTheme} theme={theme} />
               </div>
-              <div>
-                <h3>
-                  Powered by <span className="vite">Vite</span> +{" "}
-                  <span className="react">React</span>
-                </h3>
-              </div>
               <form className="inputForm" onSubmit={handleSubmit}>
                 <div className="inputContainer">
                   <Autocomplete
