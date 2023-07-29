@@ -42,13 +42,6 @@ return(weekdayName); // Output: "Wednesday"
 }
 
 
-
-
-
-
-
-
-
 export { convertDate, getDay };
 
   

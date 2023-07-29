@@ -1,0 +1,19 @@
+.alerts {
+    --shadow-color: #000000aa;
+   margin: 10px 10px 0px 10px;
+   border-radius: 8px;
+   border: 1px solid transparent;
+   padding: 10px;
+   background-color: #1a1a1a;
+   border-color: #ff6464;
+   transition: filter 0.25s, background-color 1.5s;
+   font-family: inherit;
+   font-size: 1em;
+   width: 180px;  
+ }
+ 
+ .alerts:hover {
+   filter: drop-shadow(0 0 1em var(--shadow-color));
+ }
+ 
+ 

@@ -8,6 +8,8 @@ function useWeather() {
   const [errorCode, setErrorCode] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [search, setSearch] = useState("");
+  const [alerts, setAlerts] = useState([]);
+
   const handleSearch = (place) => {
     let cityName = "";
   
@@ -42,11 +44,12 @@ function useWeather() {
       setWeatherForecast([]);
       setErrorCode("");
       setErrorMessage("");
+      setAlerts([]);
 
       let response = await fetch(
         `${import.meta.env.VITE_APP_WEAHTER_API_BASE_URL}key=${
           import.meta.env.VITE_APP_WEATHER_API_KEY
-        }&q=${search}&days=7&aqi=no&alerts=no`
+        }&q=${search}&days=7&aqi=yes&alerts=yes`
       );
 
       let data = await response.json();
@@ -59,7 +62,9 @@ function useWeather() {
         setWeatherLocation(data.location);
         setWeatherCurrent(data.current);
         setWeatherForecast(data.forecast.forecastday);
+        setAlerts(data.alerts.alert)
         setIsLoading(false);
+        console.log(alerts)
       }
     } catch (error) {
       setIsLoading(true);
@@ -75,6 +80,7 @@ function useWeather() {
     errorCode,
     errorMessage,
     search,
+    alerts,
     handleSubmit,
     getWeather,
     handleSearch,

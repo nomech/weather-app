@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import ThemeSelector from "./components/themeselector/themeselector";
 import WeatherCardExtended from "./components/weatherCardExtended/weatherCardextended";
 import WeatherForecastExtended from "./components/weatherForecastExtended/WeatherForecastExtended";
-
+import Alerts from "./components/alerts/alerts";
 
 function App() {
   const {
@@ -20,6 +20,7 @@ function App() {
     isLoading,
     errorCode,
     search,
+    alerts,
     getWeather,
     handleSubmit,
     handleSearch,
@@ -95,7 +96,7 @@ function App() {
 
   return (
     <>
-        <div className={`${theme}`}>
+        <div className='theme'>
           <>
             {weatherLocation.name ? (
               <WeatherCardExtended
@@ -135,7 +136,8 @@ function App() {
             ) : null}
           </>
           <div className={`blurConatiner-${enabled}`}>
-          <div>
+          <div className='mainContainer'>
+            <div></div>
             <div className="bodyContainer">
               <div className="titleLogo">
                 {/* Display logos for Vite and React */}
@@ -232,6 +234,26 @@ function App() {
                     : null}
                 </div>
               </div>
+            </div>
+            <div className="alertsContainer">
+              {alerts.map((alert,index) => (
+
+                <Alerts
+                key={index}
+                headline={alert.headline}
+                severity={alert.severity}
+                urgency={alert.urgency}
+                areas={alert.areas}
+                certainty={alert.certainty}
+                event={alert.event}
+                note={alert.note}
+                desc={alert.desc}
+                instruction={alert.instruction}
+
+                />
+
+              )              
+              )}
             </div>
           </div>
         </div>
